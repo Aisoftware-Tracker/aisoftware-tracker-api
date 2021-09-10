@@ -396,6 +396,11 @@ obj/
 .history
 .ionide
 
+### Mac Os ###
+# Igonore autogenerate files
+*/.DS_Store
+.DS_Store
+
 ### VisualStudio ###
 
 # User-specific files
