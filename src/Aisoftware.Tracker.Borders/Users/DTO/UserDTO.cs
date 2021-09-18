@@ -2,7 +2,7 @@ using System;
 
 namespace Aisoftware.Tracker.Borders.Users.DTO
 {
-    public class User
+    public class UserDTO
     {
         private int _id;
         private string _name;
