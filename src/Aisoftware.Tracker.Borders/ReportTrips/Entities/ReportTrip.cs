@@ -1,8 +1,8 @@
 using System;
 
-namespace Aisoftware.Tracker.Borders.ReportTrips.DTO
+namespace Aisoftware.Tracker.Borders.ReportTrips.Entities
 {
-    public class ReportTripsDTO
+    public class ReportTrip
     {
         private int _deviceId;
         private string _deviceName;

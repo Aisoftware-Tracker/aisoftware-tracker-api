@@ -2,7 +2,7 @@ using System;
 
 namespace Aisoftware.Tracker.Borders.ReportStops.DTO
 {
-    public class ReportStopsDTO
+    public class ReportStopDTO
     {
         private int _deviceId;
         private string _deviceName;

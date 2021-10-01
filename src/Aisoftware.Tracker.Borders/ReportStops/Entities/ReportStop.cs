@@ -2,7 +2,7 @@ using System;
 
 namespace Aisoftware.Tracker.Borders.ReportStops.Entities
 {
-    public class ReportStops
+    public class ReportStop
     {
         private int _deviceId;
         private string _deviceName;

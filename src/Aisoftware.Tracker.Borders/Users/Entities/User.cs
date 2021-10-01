@@ -2,6 +2,9 @@ using System;
 
 namespace Aisoftware.Tracker.Borders.Users.Entities
 {
+    ///<summary>
+    ///Gerenciamento de sessão de usuário
+    ///</summary>
     public class User
     {
         private int _id;

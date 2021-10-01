@@ -1,7 +1,11 @@
 using System;
+using System.Net;
 
 namespace Aisoftware.Tracker.Borders.Users.DTO
 {
+    ///<summary>
+    ///Gerenciamento de sessão de usuário
+    ///</summary>
     public class UserDTO
     {
         private int _id;
@@ -26,6 +30,7 @@ namespace Aisoftware.Tracker.Borders.Users.DTO
         private string _poiLayer;
         private string _token;
         private object _attributes;
+        private Cookie cookie;
 
         public int Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
@@ -49,5 +54,6 @@ namespace Aisoftware.Tracker.Borders.Users.DTO
         public string PoiLayer { get => _poiLayer; set => _poiLayer = value; }
         public string Token { get => _token; set => _token = value; }
         public object Attributes { get => _attributes; set => _attributes = value; }
+        public Cookie Cookie { get => cookie; set => cookie = value; }
     }
 }

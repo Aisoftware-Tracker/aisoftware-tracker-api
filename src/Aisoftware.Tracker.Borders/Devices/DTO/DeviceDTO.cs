@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Aisoftware.Tracker.Borders.Devices.DTO
 {
-    public class Device
+    public class DeviceDTO
     {
         private int _id;
         private string _name;
