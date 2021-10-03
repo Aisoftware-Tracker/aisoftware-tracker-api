@@ -4,4 +4,12 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Aisoftware.Tracker.Borders\Aisoftware.Tracker.Borders.csproj" />
+    <ProjectReference Include="..\Aisoftware.Tracker.Repositories\Aisoftware.Tracker.Repositories.csproj" />
+
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+
 </Project>
