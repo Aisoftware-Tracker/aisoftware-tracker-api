@@ -18,7 +18,7 @@ namespace Aisoftware.Tracker.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet]   
         public ActionResult Get()
         {
             return Ok(new Health {
