@@ -32,7 +32,7 @@ namespace Aisoftware.Tracker.UseCases.Session.UseCases
             throw new System.NotImplementedException();
         }
 
-        public async Task<UserDTO> CreateSession(SessionRequest request)
+        public async Task<UserDTO> CreateSession(UserRequest request)
         {
             var login = new Dictionary<string, string>
             {

@@ -6,7 +6,7 @@ namespace Aisoftware.Tracker.UseCases.Session.Interfaces
     public interface ISessionUseCase
     {
         Task<UserDTO> Find();
-        Task<UserDTO> CreateSession(SessionRequest request);
+        Task<UserDTO> CreateSession(UserRequest request);
 
         /// <summary>
         /// Close the Session

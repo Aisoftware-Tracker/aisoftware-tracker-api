@@ -5,7 +5,7 @@ namespace Aisoftware.Tracker.Borders.Users.DTO
     ///<summary>
     ///Gerenciamento de sessão de usuário
     ///</summary>
-    public class SessionRequest
+    public class UserRequest
     {
         private string _email;
         private string _password;
