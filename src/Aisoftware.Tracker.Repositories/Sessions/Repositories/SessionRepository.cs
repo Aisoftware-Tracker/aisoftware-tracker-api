@@ -30,9 +30,36 @@ namespace Aisoftware.Tracker.Repositories.Devices.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<User> Find()
+        public async Task<User> Find()
         {
-            throw new System.NotImplementedException();
+            string url = $"{_config.BaseUrl}{SESSION}";
+
+            var cookies = new CookieContainer();
+
+            var cookie = new Cookie("JSESSIONID", "teste", "/");
+            cookies.Add(cookie);
+
+            var handler = new HttpClientHandler
+            {
+                CookieContainer = cookies
+            };
+
+            var uri = new Uri(url);
+
+            using (var httpClient = new HttpClient(handler))
+            {
+                httpClient.DefaultRequestHeaders.Clear();
+                httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
+
+                var response = await httpClient.GetAsync(url);
+
+                var cookieList = cookies.GetCookies(uri);
+
+                _cookie = cookieList[0];
+
+                return await response.Content.ReadAsAsync<User>();
+            }
+
         }
 
         public async Task<User> CreateSession(Dictionary<string, string> request)
@@ -43,7 +70,7 @@ namespace Aisoftware.Tracker.Repositories.Devices.Repositories
         }
 
         //TODO Criar interfaces e Classes genericas paras os verbos http e suas implementacoes
-        private async Task<TResult> PostFormUrlEncoded<TResult>(string url, IEnumerable<KeyValuePair<string, string>> postData)
+        private async Task<TResult> PostFormUrlEncoded<TResult>(string url, IEnumerable<KeyValuePair<string, string>> request)
         {
             CookieContainer cookies = new CookieContainer();
             HttpClientHandler handler = new HttpClientHandler();
@@ -52,7 +79,7 @@ namespace Aisoftware.Tracker.Repositories.Devices.Repositories
 
             using (var httpClient = new HttpClient(handler))
             {
-                using (var content = new FormUrlEncodedContent(postData))
+                using (var content = new FormUrlEncodedContent(request))
                 {
                     content.Headers.Clear();
                     content.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
