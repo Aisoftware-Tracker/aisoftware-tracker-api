@@ -27,6 +27,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Aisoftware.Tracker.Api
 {
@@ -43,6 +44,11 @@ namespace Aisoftware.Tracker.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen();
+            // services.AddSwaggerGen(swagger =>
+            // {
+            //     swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Aisoftwate Tracker API" });
+            // });
 
             #region Dependency Injection
 
@@ -86,6 +92,7 @@ namespace Aisoftware.Tracker.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseRouting();
 
             app.UseAuthorization();
 
@@ -93,6 +100,10 @@ namespace Aisoftware.Tracker.Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
+
         }
     }
 }

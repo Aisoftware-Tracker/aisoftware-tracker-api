@@ -9,4 +9,8 @@
     <ProjectReference Include="..\Aisoftware.Tracker.UseCases\Aisoftware.Tracker.UseCases.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+  </ItemGroup>
+
 </Project>
