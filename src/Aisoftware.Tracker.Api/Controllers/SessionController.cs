@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Aisoftware.Tracker.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     public class SessionController : ControllerBase
     {
         private readonly ISessionUseCase _useCase;
