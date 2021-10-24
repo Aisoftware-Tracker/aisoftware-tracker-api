@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Aisoftware.Tracker.Borders.Health;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -8,7 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace Aisoftware.Tracker.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     public class HealthController : ControllerBase
     {
         private readonly ILogger<HealthController> _logger;
@@ -24,7 +22,8 @@ namespace Aisoftware.Tracker.Api.Controllers
             return Ok(new Health {
                 Status = "ON",
                 Info = "Its Running!!!",
-                Now = DateTime.Now
+                Now = DateTime.Now,
+                Version = "1.0"
             });
         }
     }
