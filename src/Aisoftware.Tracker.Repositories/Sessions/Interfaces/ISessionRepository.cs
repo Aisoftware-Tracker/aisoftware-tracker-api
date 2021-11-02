@@ -11,7 +11,7 @@ namespace Aisoftware.Tracker.Repositories.Sessions.Interfaces
         /// @Get
         /// <para/>Fetch Session information
         /// </summary>
-        Task<User> Find();
+        Task<User> Find(string cookie);
 
         /// <summary>
         /// @Post        

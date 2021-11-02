@@ -5,7 +5,7 @@ namespace Aisoftware.Tracker.UseCases.Session.Interfaces
 {
     public interface ISessionUseCase
     {
-        Task<UserDTO> Find();
+        Task<UserDTO> Find(string cookie);
         Task<UserDTO> CreateSession(UserRequest request);
 
         /// <summary>

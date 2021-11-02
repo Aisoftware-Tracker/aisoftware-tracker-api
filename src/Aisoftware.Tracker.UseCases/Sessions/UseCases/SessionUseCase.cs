@@ -27,9 +27,15 @@ namespace Aisoftware.Tracker.UseCases.Session.UseCases
             throw new System.NotImplementedException();
         }
 
-        public Task<UserDTO> Find()
+        public async Task<UserDTO> Find(string cookie)
         {
-            throw new System.NotImplementedException();
+            var user = await _repository.Find(cookie);
+
+            var dto = new MapperTool<User, UserDTO>().Mapper().Map<UserDTO>(user);
+
+            dto.Cookie = _repository.GetCookie();
+
+            return dto;
         }
 
         public async Task<UserDTO> CreateSession(UserRequest request)

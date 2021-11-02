@@ -37,7 +37,7 @@ namespace Aisoftware.Tracker.Api.Controllers
                 SameSite = SameSiteMode.None
             };
 
-            // Add the cookie to the response cookie collection
+            ///TODO transformar JSESSIONID em uma constante de classe e remover do jsonconfig
             Response.Cookies.Append("JSESSIONID", response.Cookie.Value, cookieOptions);
 
             return Ok(response);
@@ -47,10 +47,8 @@ namespace Aisoftware.Tracker.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> Find()
         {
-
             string cookie = Request.Cookies["JSESSIONID"];
 
-            Console.WriteLine("Passou na controller");
             var response = await _useCase.Find(cookie);
 
             return Ok(response);
