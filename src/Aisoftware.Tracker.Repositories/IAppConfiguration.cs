@@ -4,6 +4,6 @@ namespace Aisoftware.Tracker.Repositories
     {
         string ConnectionString { get; } 
         string BaseUrl { get; } 
-        string CookieName { get; } 
+        string BaseDomain { get; } 
     }
 }

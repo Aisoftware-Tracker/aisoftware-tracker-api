@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Aisoftware.Tracker.Borders.Health;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Aisoftware.Tracker.UseCases.Session.Interfaces;
 using Aisoftware.Tracker.Borders.Users.DTO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using System.Net;
-using System.Net.Http;
+using Aisoftware.Tracker.UseCases.Tools;
+using System;
 using System.Web;
+using Aisoftware.Tracker.Borders.Constants;
 
 namespace Aisoftware.Tracker.Api.Controllers
 {
@@ -28,7 +24,7 @@ namespace Aisoftware.Tracker.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(UserRequest request)
         {
-            var response = await _useCase.CreateSession(request);
+            var user = await _useCase.CreateSession(request);
 
             var cookieOptions = new CookieOptions
             {
@@ -38,7 +34,9 @@ namespace Aisoftware.Tracker.Api.Controllers
             };
 
             ///TODO transformar JSESSIONID em uma constante de classe e remover do jsonconfig
-            Response.Cookies.Append("JSESSIONID", response.Cookie.Value, cookieOptions);
+            Response.Cookies.Append(CookieName.JSESSIONID, user.Cookie.Value, cookieOptions);
+
+            var response = new MapperTool<UserDTO, UserResponse>().Mapper().Map<UserResponse>(user);
 
             return Ok(response);
         }
@@ -47,11 +45,21 @@ namespace Aisoftware.Tracker.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> Find()
         {
-            string cookie = Request.Cookies["JSESSIONID"];
+            string cookie = Request.Cookies[CookieName.JSESSIONID];
 
             var response = await _useCase.Find(cookie);
 
             return Ok(response);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete()
+        {
+            string cookie = Request.Cookies[CookieName.JSESSIONID];
+
+            await _useCase.Delete(cookie);
+            ///TODO deletar cookie a nivel do escopo local tambem
+            return Ok();
         }
 
     }

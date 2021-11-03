@@ -17,9 +17,9 @@ namespace Aisoftware.Tracker.UseCases.Session.UseCases
             _repository = repository;
         }
 
-        public Task Delete(UserDTO dto)
+        public async Task Delete(string cookie)
         {
-            throw new System.NotImplementedException();
+            await _repository.Delete(cookie);            
         }
 
         public Task<UserDTO> Find(int id)
@@ -27,13 +27,11 @@ namespace Aisoftware.Tracker.UseCases.Session.UseCases
             throw new System.NotImplementedException();
         }
 
-        public async Task<UserDTO> Find(string cookie)
+        public async Task<UserResponse> Find(string cookie)
         {
             var user = await _repository.Find(cookie);
 
-            var dto = new MapperTool<User, UserDTO>().Mapper().Map<UserDTO>(user);
-
-            dto.Cookie = _repository.GetCookie();
+            var dto = new MapperTool<User, UserResponse>().Mapper().Map<UserResponse>(user);
 
             return dto;
         }

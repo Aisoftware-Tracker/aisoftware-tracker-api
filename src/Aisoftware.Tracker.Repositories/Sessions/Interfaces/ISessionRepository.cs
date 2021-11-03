@@ -23,7 +23,7 @@ namespace Aisoftware.Tracker.Repositories.Sessions.Interfaces
         /// @Delete
         /// <para/>Close the Session
         /// </summary>
-        Task Delete();
+        Task Delete(string cookie);
 
         /// <summary>
         /// <para/>Fetch Cookies
